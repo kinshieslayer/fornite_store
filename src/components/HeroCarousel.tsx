@@ -101,23 +101,7 @@ export const HeroCarousel = ({ onAddToCart }: { onAddToCart: (item: { name: stri
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-4">
-                <Button
-                  size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 glow-cyan text-lg px-8 py-6 font-bold"
-                  onClick={() => onAddToCart({ name: slide.title, price: slide.price, image: slide.image })}
-                >
-                  <ShoppingCart className="h-5 w-5 mr-2" />
-                  ADD TO CART
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-muted-foreground/30 text-foreground hover:bg-secondary text-lg px-8 py-6"
-                >
-                  View Details
-                </Button>
-              </div>
+
             </motion.div>
           </AnimatePresence>
         </div>

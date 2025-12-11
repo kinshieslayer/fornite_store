@@ -3,8 +3,12 @@ import { motion } from 'framer-motion';
 import { Lock, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-import ogAccount1 from '@/assets/og-account-neo.png';
-import ogAccount2 from '@/assets/og-account-sentinel.png';
+import ogBundle1 from '@/assets/og-bundle-1.webp';
+import ogBundle2 from '@/assets/og-bundle-2.webp';
+import ogBundle3 from '@/assets/og-bundle-3.webp';
+import ogBundle4 from '@/assets/og-bundle-4.webp';
+import ogBundle5 from '@/assets/og-bundle-5.webp';
+import ogBundle6 from '@/assets/og-bundle-6.webp';
 import { SponsorLockerModal } from './SponsorLockerModal';
 
 interface OGAccount {
@@ -20,20 +24,56 @@ interface OGAccount {
 const ogAccounts: OGAccount[] = [
   {
     id: 1,
-    title: 'Neo Versa Collection',
-    description: '67 skins | Neo Versa | Joey | Torin | 1 exclusives',
-    price: '$899.99',
-    features: ['67 Skins', 'Neo Versa', 'Joey', 'Torin'],
-    image: ogAccount1,
+    title: '202 SKINS + 4555 V-BUCKS',
+    description: 'Premium loaded account containing 115 Emotes and 173 Pickaxes.',
+    price: '$199.99',
+    features: ['202 Skins', '4555 V-Bucks', '115 Emotes', '173 Pickaxes'],
+    image: ogBundle1,
     badge: 'Limited Time FREE',
   },
   {
     id: 2,
-    title: 'Sentinel & Zeus Bundle',
-    description: '130 skins | Sentinel | Zeus | Fade | 0 exclusives',
-    price: '$649.99',
-    features: ['130 Skins', 'Sentinel', 'Zeus', 'Fade'],
-    image: ogAccount2,
+    title: '297 SKINS + 150 V-BUCKS',
+    description: 'Massive collection with 297 Skins, 191 Emotes, and 230 Pickaxes.',
+    price: '$159.99',
+    features: ['297 Skins', '150 V-Bucks', '191 Emotes', '230 Pickaxes'],
+    image: ogBundle2,
+    badge: 'Limited Time FREE',
+  },
+  {
+    id: 3,
+    title: '109 SKINS + 400 V-BUCKS',
+    description: 'Perfect starter stack with 79 Emotes and 70 Pickaxes.',
+    price: '$99.99',
+    features: ['109 Skins', '400 V-Bucks', '79 Emotes', '70 Pickaxes'],
+    image: ogBundle3,
+    badge: 'Limited Time FREE',
+  },
+  {
+    id: 4,
+    title: '297 SKINS + 50 V-BUCKS',
+    description: 'Huge inventory with 253 Emotes and 278 Pickaxes included.',
+    price: '$159.99',
+    features: ['297 Skins', '50 V-Bucks', '253 Emotes', '278 Pickaxes'],
+    image: ogBundle4,
+    badge: 'Limited Time FREE',
+  },
+  {
+    id: 5,
+    title: '157 SKINS + 100 V-BUCKS',
+    description: 'Solid account featuring 144 Emotes and 177 Pickaxes.',
+    price: '$129.99',
+    features: ['157 Skins', '100 V-Bucks', '144 Emotes', '177 Pickaxes'],
+    image: ogBundle5,
+    badge: 'Limited Time FREE',
+  },
+  {
+    id: 6,
+    title: '164 SKINS + 200 V-BUCKS',
+    description: 'Great value with 128 Emotes and 162 Pickaxes.',
+    price: '$139.99',
+    features: ['164 Skins', '200 V-Bucks', '128 Emotes', '162 Pickaxes'],
+    image: ogBundle6,
     badge: 'Limited Time FREE',
   },
 ];
@@ -94,7 +134,7 @@ export const OGAccountsSection = ({ onInquire }: OGAccountsSectionProps) => {
         </div>
 
         {/* Accounts Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {ogAccounts.map((account, index) => (
             <motion.div
               key={account.id}

@@ -5,8 +5,7 @@ import { Button } from '@/components/ui/button';
 
 import skinRecon from '@/assets/skin-recon-specialist.jpg';
 import skinBlue from '@/assets/skin-blue-squire.jpg';
-import pickaxeRainbow from '@/assets/pickaxe-rainbow.jpg';
-import emoteFloss from '@/assets/emote-floss.jpg';
+
 import bundleLegendary from '@/assets/bundle-legendary.jpg';
 import skinShoto from '@/assets/skin-shoto.jpg';
 import backblingWolfie from '@/assets/backbling-wolfie.jpg';
@@ -17,6 +16,21 @@ import skinTornado from '@/assets/skin-tornado.jpg';
 import skinMolten from '@/assets/skin-molten.jpg';
 import skinMarceline from '@/assets/skin-marceline.jpg';
 import skinMiku from '@/assets/skin-miku.jpg';
+import skinVecna from '@/assets/skin-vecna.jpg';
+import skinArt from '@/assets/skin-art.jpg';
+import skinGodzilla from '@/assets/skin-godzilla.jpg';
+import skinDanny from '@/assets/skin-danny.jpg';
+import skinSukuna from '@/assets/skin-sukuna.jpg';
+import emoteGriddy from '@/assets/emote-griddy.png';
+import emoteTakeTheL from '@/assets/emote-take-the-l.png';
+import emoteOrange from '@/assets/emote-orange-justice.png';
+import emoteTidy from '@/assets/emote-tidy.png';
+import emoteWorld from '@/assets/emote-around-world.png';
+import emoteEnd from '@/assets/emote-in-the-end.png';
+import pickaxeVecna from '@/assets/pickaxe-vecna.jpg';
+import pickaxeSymbiote from '@/assets/pickaxe-symbiote.jpg';
+import pickaxeScratchy from '@/assets/pickaxe-scratchy.jpg';
+import pickaxeHadean from '@/assets/pickaxe-hadean.jpg';
 
 type Rarity = 'legendary' | 'epic' | 'rare' | 'uncommon' | 'common';
 type ItemType = 'Skins' | 'Pickaxes' | 'Emotes';
@@ -37,8 +51,21 @@ const shopItems: ShopItem[] = [
   { id: 4, name: 'Xenomorph', type: 'Skins', rarity: 'legendary', price: '2,000 V-Bucks', image: skinAlien },
   { id: 5, name: 'Ghostface', type: 'Skins', rarity: 'epic', price: '1,500 V-Bucks', image: skinGhostface },
   { id: 6, name: 'Terrible Tornado', type: 'Skins', rarity: 'legendary', price: '2,200 V-Bucks', image: skinTornado },
-  { id: 7, name: 'Spectrum Slicer', type: 'Pickaxes', rarity: 'epic', price: '1,200 V-Bucks', image: pickaxeRainbow },
-  { id: 8, name: 'Neon Groove', type: 'Emotes', rarity: 'uncommon', price: '500 V-Bucks', image: emoteFloss },
+  { id: 7, name: 'Vecna', type: 'Skins', rarity: 'legendary', price: '2,000 V-Bucks', image: skinVecna },
+  { id: 8, name: 'Art the Clown', type: 'Skins', rarity: 'epic', price: '1,500 V-Bucks', image: skinArt },
+  { id: 9, name: 'Godzilla', type: 'Skins', rarity: 'legendary', price: '2,500 V-Bucks', image: skinGodzilla },
+  { id: 10, name: 'Danny Phantom', type: 'Skins', rarity: 'epic', price: '1,500 V-Bucks', image: skinDanny },
+  { id: 11, name: 'Ryomen Sukuna', type: 'Skins', rarity: 'legendary', price: '2,000 V-Bucks', image: skinSukuna },
+  { id: 12, name: 'Symbiote Slicer', type: 'Pickaxes', rarity: 'epic', price: '1,200 V-Bucks', image: pickaxeSymbiote },
+  { id: 13, name: 'Hadean Key', type: 'Pickaxes', rarity: 'rare', price: '800 V-Bucks', image: pickaxeHadean },
+  { id: 14, name: 'Vecna\'s Axe', type: 'Pickaxes', rarity: 'rare', price: '800 V-Bucks', image: pickaxeVecna },
+  { id: 15, name: 'Scratchy', type: 'Pickaxes', rarity: 'uncommon', price: '500 V-Bucks', image: pickaxeScratchy },
+  { id: 16, name: 'Get Griddy', type: 'Emotes', rarity: 'epic', price: '500 V-Bucks', image: emoteGriddy },
+  { id: 17, name: 'Take The L', type: 'Emotes', rarity: 'rare', price: '500 V-Bucks', image: emoteTakeTheL },
+  { id: 18, name: 'Orange Justice', type: 'Emotes', rarity: 'epic', price: '800 V-Bucks', image: emoteOrange },
+  { id: 19, name: 'Tidy', type: 'Emotes', rarity: 'rare', price: '500 V-Bucks', image: emoteTidy },
+  { id: 20, name: 'Around The World', type: 'Emotes', rarity: 'rare', price: '500 V-Bucks', image: emoteWorld },
+  { id: 21, name: 'In The End', type: 'Emotes', rarity: 'rare', price: '500 V-Bucks', image: emoteEnd },
 ];
 
 const filters: (ItemType | 'All')[] = ['All', 'Skins', 'Pickaxes', 'Emotes'];
@@ -174,16 +201,27 @@ export const ItemShopSection = ({ onAddToCart }: ItemShopSectionProps) => {
                   {item.type}
                 </span>
 
-                <h3 className="text-sm font-medium text-foreground leading-tight truncate group-hover:text-white transition-colors">
+                <h3 className="text-sm font-fortnite text-foreground leading-tight truncate group-hover:text-white transition-colors">
                   {item.name}
                 </h3>
 
-                <div className="flex items-center gap-1.5 pt-1">
-                  {/* Reuse Fortnite Font for Price only for flavor, but keep it clean */}
-                  <div className="flex items-center gap-1 font-fortnite text-sm text-foreground/90">
-                    <img src={vbucksIcon} alt="V-Bucks" className="w-4 h-4 object-contain opacity-90" />
-                    <span className="translate-y-[1px]">{item.price.replace(' V-Bucks', '')}</span>
+                <div className="pt-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    {/* Original Price (Struck Through) */}
+                    <div className="flex items-center gap-0.5 opacity-50 relative grayscale">
+                      <div className="absolute inset-x-0 top-1/2 h-0.5 bg-red-500 -rotate-6 scale-x-110" />
+                      <img src={vbucksIcon} alt="V-Bucks" className="w-3 h-3 object-contain" />
+                      <span className="font-fortnite text-xs text-muted-foreground">{item.price.replace(' V-Bucks', '')}</span>
+                    </div>
+
+                    {/* FREE Label */}
+                    <span className="font-fortnite text-sm text-green-400 font-black tracking-wide">FREE</span>
                   </div>
+
+                  {/* Limited Time Badge */}
+                  <span className="inline-block text-[9px] font-bold text-gold bg-gold/10 px-1.5 py-0.5 rounded border border-gold/20 uppercase tracking-wider">
+                    Limited Time Offer
+                  </span>
                 </div>
               </div>
             </motion.div>
