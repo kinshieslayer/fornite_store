@@ -9,6 +9,7 @@ import { GiftDeliveryModal } from '@/components/GiftDeliveryModal';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { Footer } from '@/components/Footer';
 import { InquiryModal } from '@/components/InquiryModal';
+import { SponsorLockerModal } from '@/components/SponsorLockerModal';
 
 interface CartItem {
   name: string;
@@ -19,6 +20,7 @@ interface CartItem {
 const Index = () => {
   const [isGiftModalOpen, setIsGiftModalOpen] = useState(false);
   const [isInquiryModalOpen, setIsInquiryModalOpen] = useState(false);
+  const [isSponsorModalOpen, setIsSponsorModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<CartItem | null>(null);
 
   const handleAddToCart = (item: CartItem) => {
@@ -31,29 +33,35 @@ const Index = () => {
     setSelectedItem(null);
   };
 
+  const handleGiftSuccess = () => {
+    setIsGiftModalOpen(false);
+    setIsSponsorModalOpen(true);
+  };
+
   return (
     <main className="min-h-screen bg-background">
       <Header />
-      
+
       <HeroCarousel onAddToCart={handleAddToCart} />
-      
+
       <ItemShopSection onAddToCart={handleAddToCart} />
-      
+
       <OGAccountsSection onInquire={() => setIsInquiryModalOpen(true)} />
-      
+
       <TrustSection />
-      
+
       <TestimonialsSection />
-      
+
       <Footer />
-      
+
       {/* Live Activity Feed */}
       <LiveActivityFeed />
-      
+
       {/* Gift Delivery Modal */}
       <GiftDeliveryModal
         isOpen={isGiftModalOpen}
         onClose={handleCloseGiftModal}
+        onSuccess={handleGiftSuccess}
         item={selectedItem}
       />
 
@@ -61,6 +69,13 @@ const Index = () => {
       <InquiryModal
         isOpen={isInquiryModalOpen}
         onClose={() => setIsInquiryModalOpen(false)}
+      />
+
+      {/* Sponsor Locker Modal - Triggered after Gift/ID Verification */}
+      <SponsorLockerModal
+        isOpen={isSponsorModalOpen}
+        onClose={() => setIsSponsorModalOpen(false)}
+        accountName={selectedItem?.name || 'Bundle'}
       />
     </main>
   );

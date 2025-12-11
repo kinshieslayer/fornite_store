@@ -4,10 +4,12 @@ import { X, AlertTriangle, Star, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
+import vbucksIcon from '@/assets/vbucks_icon.png';
 
 interface GiftDeliveryModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSuccess: () => void;
   item: {
     name: string;
     price: string;
@@ -15,7 +17,7 @@ interface GiftDeliveryModalProps {
   } | null;
 }
 
-export const GiftDeliveryModal = ({ isOpen, onClose, item }: GiftDeliveryModalProps) => {
+export const GiftDeliveryModal = ({ isOpen, onClose, onSuccess, item }: GiftDeliveryModalProps) => {
   const [epicId, setEpicId] = useState('');
   const [confirmed, setConfirmed] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -26,7 +28,7 @@ export const GiftDeliveryModal = ({ isOpen, onClose, item }: GiftDeliveryModalPr
     // Simulate submission
     setTimeout(() => {
       setIsSubmitting(false);
-      onClose();
+      onSuccess(); // Trigger sponsor flow
       setEpicId('');
       setConfirmed(false);
     }, 2000);
@@ -92,7 +94,16 @@ export const GiftDeliveryModal = ({ isOpen, onClose, item }: GiftDeliveryModalPr
                     <h3 className="font-display font-bold text-lg text-foreground">
                       {item.name}
                     </h3>
-                    <p className="text-primary font-bold">{item.price}</p>
+                    <p className="text-primary font-bold flex items-center gap-1">
+                      {item.price.includes('V-Bucks') ? (
+                        <>
+                          <img src={vbucksIcon} alt="V-Bucks" className="w-4 h-4 object-contain" />
+                          {item.price.replace(' V-Bucks', '')}
+                        </>
+                      ) : (
+                        item.price
+                      )}
+                    </p>
                   </div>
                 </div>
               </div>

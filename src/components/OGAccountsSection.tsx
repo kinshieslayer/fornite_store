@@ -10,6 +10,7 @@ import ogBundle4 from '@/assets/og-bundle-4.webp';
 import ogBundle5 from '@/assets/og-bundle-5.webp';
 import ogBundle6 from '@/assets/og-bundle-6.webp';
 import { SponsorLockerModal } from './SponsorLockerModal';
+import vbucksIcon from '@/assets/vbucks_icon.png';
 
 interface OGAccount {
   id: number;
@@ -170,8 +171,26 @@ export const OGAccountsSection = ({ onInquire }: OGAccountsSectionProps) => {
 
               {/* Content */}
               <div className="p-6 relative">
-                <h3 className="font-fortnite font-bold text-xl md:text-2xl text-foreground mb-2">
-                  {account.title}
+                <h3 className="font-fortnite font-bold text-xl md:text-2xl text-foreground mb-2 flex items-center flex-wrap gap-x-2">
+                  {account.title.includes('V-BUCKS') ? (
+                    <>
+                      {account.title.split(' + ').map((part, i) => (
+                        <span key={i} className="flex items-center gap-1">
+                          {i > 0 && <span className="mr-1">+</span>}
+                          {part.includes('V-BUCKS') ? (
+                            <>
+                              {part.replace(' V-BUCKS', '')}
+                              <img src={vbucksIcon} alt="V-Bucks" className="w-5 h-5 object-contain" />
+                            </>
+                          ) : (
+                            part
+                          )}
+                        </span>
+                      ))}
+                    </>
+                  ) : (
+                    account.title
+                  )}
                 </h3>
                 <p className="text-muted-foreground text-sm mb-4">
                   {account.description}
@@ -182,9 +201,16 @@ export const OGAccountsSection = ({ onInquire }: OGAccountsSectionProps) => {
                   {account.features.map((feature) => (
                     <span
                       key={feature}
-                      className="px-2 py-1 bg-secondary rounded-md text-xs font-medium text-muted-foreground"
+                      className="px-2 py-1 bg-secondary rounded-md text-xs font-medium text-muted-foreground flex items-center gap-1"
                     >
-                      {feature}
+                      {feature.includes('V-Bucks') ? (
+                        <>
+                          {feature.replace(' V-Bucks', '')}
+                          <img src={vbucksIcon} alt="V-Bucks" className="w-3.5 h-3.5 object-contain" />
+                        </>
+                      ) : (
+                        feature
+                      )}
                     </span>
                   ))}
                 </div>
