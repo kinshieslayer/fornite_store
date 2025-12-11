@@ -1,0 +1,289 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@fontsource/orbitron/400.css';
+@import '@fontsource/orbitron/500.css';
+@import '@fontsource/orbitron/700.css';
+@import '@fontsource/orbitron/900.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+
+/* Fortnite Custom Fonts */
+@font-face {
+  font-family: 'Burbank Big Condensed';
+  src: url('/fonts/Burbank Big Condensed Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fortnite';
+  src: url('/fonts/fortnite.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Epic Games Inspired Palette */
+    --background: 220 14% 8%;
+    /* #121212 - Deep rich dark */
+    --foreground: 0 0% 95%;
+    /* #f2f2f2 - Soft white */
+
+    --card: 220 13% 18%;
+    /* #202020 - Lighter gray for cards */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 13% 18%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 212 100% 50%;
+    /* Epic Blue */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 13% 25%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 13% 25%;
+    --muted-foreground: 220 10% 65%;
+
+    --accent: 220 13% 30%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 25%;
+    --input: 220 13% 25%;
+    --ring: 212 100% 50%;
+
+    --radius: 0.25rem;
+    /* Sharper corners like professional stores */
+
+    /* Custom Gaming Colors */
+    --gold: 45 100% 50%;
+    --gold-glow: 45 100% 60%;
+    --neon-cyan: 190 100% 50%;
+    --neon-purple: 280 80% 60%;
+    --neon-pink: 330 100% 60%;
+    --neon-green: 150 100% 45%;
+    --neon-orange: 25 100% 55%;
+
+    /* Rarity Colors */
+    --rarity-legendary: 35 100% 50%;
+    --rarity-epic: 280 80% 55%;
+    --rarity-rare: 210 100% 55%;
+    --rarity-uncommon: 140 70% 45%;
+    --rarity-common: 0 0% 50%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(190 100% 50% / 0.2) 0%, hsl(280 80% 60% / 0.2) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 40%) 0%, hsl(35 100% 60%) 50%, hsl(45 100% 40%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 12%) 0%, hsl(0 0% 8%) 100%);
+    --gradient-premium: linear-gradient(135deg, hsl(45 100% 50% / 0.15) 0%, hsl(280 80% 60% / 0.15) 100%);
+
+    /* Shadows */
+    --shadow-neon: 0 0 30px hsl(190 100% 50% / 0.4);
+    --shadow-gold: 0 0 30px hsl(45 100% 50% / 0.4);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.5);
+
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 190 100% 50%;
+    --sidebar-primary-foreground: 0 0% 3%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 190 100% 50%;
+  }
+
+  .dark {
+    --background: 0 0% 3%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 190 100% 50%;
+    --primary-foreground: 0 0% 3%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 280 80% 60%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 18%;
+    --input: 0 0% 15%;
+    --ring: 190 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+@layer components {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(45 100% 50%) 0%, hsl(35 100% 70%) 50%, hsl(45 100% 50%) 100%);
+  }
+
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(190 100% 50%) 0%, hsl(200 100% 70%) 100%);
+  }
+
+  .text-gradient-premium {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(45 100% 50%) 0%, hsl(280 80% 60%) 100%);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 30px hsl(190 100% 50% / 0.4), 0 0 60px hsl(190 100% 50% / 0.2);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 30px hsl(45 100% 50% / 0.4), 0 0 60px hsl(45 100% 50% / 0.2);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 30px hsl(280 80% 60% / 0.4), 0 0 60px hsl(280 80% 60% / 0.2);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 10px 20px hsl(0 0% 0% / 0.5);
+  }
+
+  .rarity-legendary {
+    border-color: hsl(35 100% 50%);
+  }
+
+  .rarity-epic {
+    border-color: hsl(280 80% 55%);
+  }
+
+  .rarity-rare {
+    border-color: hsl(210 100% 55%);
+  }
+
+  .rarity-uncommon {
+    border-color: hsl(140 70% 45%);
+  }
+
+  .rarity-common {
+    border-color: hsl(0 0% 50%);
+  }
+
+  .glass {
+    @apply backdrop-blur-xl;
+    background: hsl(0 0% 5% / 0.9);
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md rounded-xl;
+    background: linear-gradient(135deg, hsl(0 0% 15% / 0.6) 0%, hsl(0 0% 10% / 0.8) 100%);
+    border: 1px solid hsl(0 0% 25% / 0.3);
+  }
+
+  /* Fortnite Font Utilities */
+  .font-fortnite {
+    font-family: 'Burbank Big Condensed', 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: 0.05em;
+  }
+
+  .font-fortnite-alt {
+    font-family: 'Fortnite', 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 20px hsl(190 100% 50% / 0.3);
+    }
+
+    100% {
+      box-shadow: 0 0 40px hsl(190 100% 50% / 0.6), 0 0 60px hsl(190 100% 50% / 0.3);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg,
+        transparent 0%,
+        hsl(0 0% 100% / 0.1) 50%,
+        transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+}
