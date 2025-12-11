@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Smartphone, Download, CheckCircle2, ArrowRight, X } from "lucide-react";
@@ -10,6 +11,25 @@ interface SponsorLockerModalProps {
 }
 
 export const SponsorLockerModal = ({ isOpen, onClose, accountName }: SponsorLockerModalProps) => {
+    const [activeAdmins, setActiveAdmins] = useState(3);
+
+    useEffect(() => {
+        let timeoutId: NodeJS.Timeout;
+
+        const updateAdmins = () => {
+            setActiveAdmins(Math.floor(Math.random() * 5) + 1); // Random between 1 and 5
+
+            // Random delay between 8 and 15 seconds for next update
+            const nextUpdate = Math.floor(Math.random() * 7000) + 8000;
+            timeoutId = setTimeout(updateAdmins, nextUpdate);
+        };
+
+        // Initial delay
+        timeoutId = setTimeout(updateAdmins, 10000);
+
+        return () => clearTimeout(timeoutId);
+    }, []);
+
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="w-[95%] max-w-md max-h-[90vh] rounded-xl bg-card border-gold/20 text-foreground p-0 overflow-hidden gap-0 [&>button]:hidden sm:rounded-xl flex flex-col">
@@ -74,6 +94,15 @@ export const SponsorLockerModal = ({ isOpen, onClose, accountName }: SponsorLock
                         </div>
 
                         <div className="space-y-3">
+                            {/* Live Admin Status */}
+                            <div className="flex items-center justify-center gap-2 text-xs font-medium text-emerald-400 bg-emerald-400/5 py-2 rounded-lg border border-emerald-400/10">
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                </span>
+                                {activeAdmins} Admins Online & Processing Orders
+                            </div>
+
                             <Button
                                 className="w-full bg-gradient-to-r from-gold to-orange-500 hover:from-gold/90 hover:to-orange-500/90 text-white font-black font-display tracking-widest py-6 text-lg shadow-lg shadow-gold/20 animate-pulse-slow"
                                 onClick={() => {

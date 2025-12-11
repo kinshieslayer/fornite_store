@@ -15,10 +15,19 @@ const usernames = [
 ];
 
 const items = [
-  'Shoto Todoroki Bundle', 'Recon Specialist', 'Wolfie Bundle', 'Spectrum Slicer',
-  'Blue Squire', 'Neon Groove Emote', 'Inferno Legends Pack', 'Black Knight Account',
-  'Renegade Raider Account', 'Skull Trooper', 'Galaxy Skin', 'Ikonik Bundle',
-  'Travis Scott Bundle', 'Mako Glider', 'Aerial Assault Trooper Account',
+  // Skins
+  'Molten Metal Mouth', 'Marceline', 'Hatsune Miku', 'Xenomorph', 'Ghostface',
+  'Terrible Tornado', 'Vecna', 'Art the Clown', 'Godzilla', 'Danny Phantom', 'Ryomen Sukuna',
+
+  // Pickaxes
+  'Symbiote Slicer', 'Hadean Key', "Vecna's Axe", 'Scratchy',
+
+  // Emotes
+  'Get Griddy', 'Take The L', 'Orange Justice', 'Tidy', 'Around The World', 'In The End',
+
+  // OG Accounts
+  '202 Skins + 45,500 V-Bucks Bundle', 'OG Renegade Raider Account', '297 Skins Account',
+  'Black Knight + 150 V-Bucks', 'Galaxy Skin Bundle', 'Ikonik + 200 V-Bucks',
 ];
 
 export const LiveActivityFeed = () => {
